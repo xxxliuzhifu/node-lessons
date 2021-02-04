@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <span class="topic_full_title"
+            ><span class="put_top">置顶</span>
+            请大家遵纪守法，勿发布不合规内容
+        </span>
+        <script src="./jquery.js"></script>
+        <script>
+            // const box = document.querySelector('.topic_full_title')
+            // console.log(1, box.innerHTML)
+            // console.log(2, box.innerText)
+            // console.log(3, box.lastChild.nodeValue.trim())
+            const box = $('.topic_full_title').eq(0)
+            console.log(1, box.html())
+            console.log(2, box.text())
+            console.log(
+                3,
+                box
+                    .contents()
+                    .filter(function () {
+                        return this.nodeType === 3
+                    })
+                    .text()
+                    .trim()
+            )
+        </script>
+    </body>
+</html>
