@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script>
+      async function fn() {
+        let a = []
+        let arr = []
+        for (let index = 0; index < 5; index++) {
+          arr.push(axios.get('http://www.eightye.com/api/'))
+        }
+        let newArr = []
+        for (let i = 0; i < arr.length; i += 3) {
+          newArr.push(arr.slice(i, i + 3))
+        }
+        for (let i = 0; i < newArr.length; i++) {
+          const res1 = await Promise.all(newArr[i])
+          console.log('res1', res1)
+          a.push(res1)
+        }
+        console.log('a', a)
+      }
+      fn()
+    </script>
+  </body>
+</html>
