@@ -61,12 +61,14 @@ app.use(async (ctx, next) => {
         return superagent.get(item)
       })
       let newArr = []
+      // 控制并发数 一次发3个请求
       for (let i = 0; i < urlArray.length; i += 3) {
         newArr.push(urlArray.slice(i, i + 3))
       }
       const ary = []
       for (let i = 0; i < newArr.length; i++) {
         const res1 = await Promise.all(newArr[i])
+        //获取每一个标题的信息
         for (let i = 0; i < res1.length; i++) {
           const { title, firstPanel, author } = getAuthorInfo(res1[i])
           try {
