@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // async function fn() {
+      //   const ab = await new Promise(async (res, rej) => {
+      //     const json = await fetch('http://www.eightye.com/api/')
+      //     const data = await json.json()
+      //     res(data)
+      //   }).catch((err) => {
+      //     console.log('err', err)
+      //   })
+      //   console.log('ab', ab)
+      // }
+
+      async function fn() {
+        new Promise(async (res, rej) => {
+          const json = await fetch('http://www.eightye.com/api/')
+          const data = await json.json()
+          res(data)
+        })
+          .then((res) => {
+            console.log('res', res)
+          })
+          .catch((err) => {
+            console.log('err', err)
+          })
+      }
+      fn()
+
+      // fetch('http://www.eightye.com/api/')
+      //   .then(function (response) {
+      //     return response.json()
+      //   })
+      //   .then(function (myJson) {
+      //     console.log(myJson)
+      //   })
+      //   .catch((err) => {
+      //     console.log(1, err)
+      //   })
+
+      // Promise.all([
+      //   fetch('http://www.eightye.com/api/'),
+      //   fetch('http://www.eightye.com/api/')
+      // ]).then((res) => {
+      //   console.log('res', res)
+      // })
+    </script>
+  </body>
+</html>
